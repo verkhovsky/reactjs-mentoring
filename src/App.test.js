@@ -1,11 +1,12 @@
+import React from 'react';
 import { render } from '@testing-library/react'
 
-import App from '../App';
+import App from './App';
 
 describe('App', () => {
   it('should render provider', () => {
-    const wrapper = render(<App />);
+    const {getByText} = render(<App />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(getByText('Hello World, I\'m React Create Element')).not.toBe(null);
   });
 });

@@ -1,6 +1,3 @@
-const path = require('path');
-const { HotModuleReplacementPlugin } = require("webpack");
-
 module.exports = {
     mode: "development",
     devtool : 'inline-source-map',
@@ -19,13 +16,8 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: path.join(__dirname, '../build'),
-        compress: true,
         port: 8080,
-        open: true
-    },
-    plugins: [
-        // Only update what has changed on hot reload
-        new HotModuleReplacementPlugin(),
-    ]
+        open: true,
+        host: 'localhost'
+    }
 }
