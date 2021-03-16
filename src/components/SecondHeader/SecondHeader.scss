@@ -1,0 +1,14 @@
+.second-header {
+  &--wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  &--button {
+    min-width: 180px;
+    height: 50px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: $color-red;
+  }
+}

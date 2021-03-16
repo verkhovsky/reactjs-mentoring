@@ -1,7 +1,7 @@
 {
-  "singleQuote": true,
-  "proseWrap": "never",
-  "jsxBracketSameLine": false,
-  "trailingComma": "all",
-  "endOfLine": "auto"
+  "tabWidth": 2,
+  "semi": true,
+  "singleQuote": false,
+  "arrowParens": "avoid",
+  "trailingComma": "all"
 }

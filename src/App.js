@@ -1,17 +1,10 @@
 import React from 'react';
 
-import { Component, PureComponent, Functional } from './components';
+import './styles/styles.scss'
 
-import './App.css'
-
-function App() {
+const App = () => {
   return (
-    <div className='App'>
-      <Component />
-      <PureComponent />
-      <Functional />
-      {React.createElement('span', null, 'Hello World, I\'m React Create Element')}
-    </div>
+    <div className='App'></div>
   );
 }
 

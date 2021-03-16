@@ -1,0 +1,37 @@
+.search {
+    &--wrapper {
+        padding: 30px 60px;
+    }
+
+    &--label {
+        margin-bottom: 40px;
+        font-size: 4rem;
+        font-weight: 300;
+        color: $color-white;
+        text-align: left;
+        text-transform: uppercase;
+    }
+
+    &--content-wrapper {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &--input {
+        padding: 20px;
+        width: calc(100% - 250px);
+        height: 60px;
+        font-size: 2rem;
+        color: $color-grey;
+        border: 0;
+        border-radius: 5px;
+    }
+
+    &--button {
+        width: 240px;
+        height: 60px;
+        font-size: 2rem;
+        color: #fff;
+        background-color: $color-red;
+    }
+}

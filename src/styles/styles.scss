@@ -1,0 +1,11 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+@import '../components/Components.scss';
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
