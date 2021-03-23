@@ -1,12 +1,21 @@
-
 .header {
-    &--wrapper {
-        margin-bottom: 10px;
-        height: 400px;
-    }
-   
-    &--content {
-      width: 100%;
-      height: 100%;
-    }
+  &--wrapper {
+    align-self: flex-start;
+    margin-bottom: 10px;
+    height: 400px;
+    width: 100%;
+    background-image: url('../assets/images/header-background.jpeg');
+    background-size: 150%;
+    background-position: 80% 85%;
   }
+
+  &--overlay {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+  }
+
+  &--content {
+    padding: 20px 40px;
+  }
+}

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { Logo } from "../Logo";
+import { Logo } from '../Logo';
 
 export const Footer = () => {
   return (
-    <footer className='footer--wrapper'>
+    <footer className="footer--wrapper">
       <Logo />
     </footer>
   );

@@ -1,22 +1,21 @@
-
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from "classnames";
+import classnames from 'classnames';
 
-const Button = ({ children, className }) => {
+export const Button = ({ children, className }) => {
   return (
-    <button className={classnames('button--wrapper', className)}>{children}</button>
+    <button className={classnames('button--wrapper', className)}>
+      {children}
+    </button>
   );
 };
 
 Button.propTypes = {
   children: PropTypes.node,
-  className: PropTypes.string
-}
+  className: PropTypes.string,
+};
 
 Button.defaultProps = {
   children: null,
-  className: ''
-}
-
-export { Button }
+  className: '',
+};

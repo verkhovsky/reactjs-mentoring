@@ -1,11 +1,14 @@
 import React from 'react';
 
-import './styles/styles.scss'
+import { Main } from './pages';
+import './styles/styles.scss';
 
 const App = () => {
   return (
-    <div className='App'></div>
+    <div className="App">
+      <Main></Main>
+    </div>
   );
-}
+};
 
 export default App;

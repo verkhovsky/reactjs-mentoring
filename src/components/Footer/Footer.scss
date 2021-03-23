@@ -1,8 +1,9 @@
 .footer {
-    &--wrapper {
-        @include flexCenterCenter;
+  &--wrapper {
+    @include flexCenterCenter;
 
-        height: 70px;
-        background-color: $color-dark-grey;
-    }
+    height: 70px;
+    width: 100%;
+    background-color: $color-dark-grey;
+  }
 }

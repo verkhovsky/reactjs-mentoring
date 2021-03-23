@@ -2,10 +2,11 @@
 @import './mixins.scss';
 
 @import '../components/Components.scss';
+@import '../pages/Pages.scss';
 
 .App {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  @include flexCenterCenter;
+
+  background-color: $color-grey;
+  flex-direction: column;
 }

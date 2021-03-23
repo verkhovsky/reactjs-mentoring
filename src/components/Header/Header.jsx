@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { SecondHeader } from "../SecondHeader";
-import { Search } from "../Search";
+import { SecondHeader } from '../SecondHeader';
+import { Search } from '../Search';
 
-
-const Header = () => {
+export const Header = () => {
   return (
-    <header className='header--wrapper'>
-      <div className='header--content'>
-        <SecondHeader />
-        <Search />
+    <header className="header--wrapper">
+      <div className="header--overlay">
+        <div className="header--content">
+          <SecondHeader />
+          <Search />
+        </div>
       </div>
     </header>
   );
 };
-
-export default Header;

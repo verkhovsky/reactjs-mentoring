@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ERROR_LABES, BLOCK_NAME } from './constants'
- 
+import { ERROR_LABES, BLOCK_NAME } from './constants';
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -14,19 +14,15 @@ class ErrorBoundary extends React.Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    console.error("Uncaught error:", error, errorInfo);
+    console.error('Uncaught error:', error, errorInfo);
   }
 
   render() {
     const { hasError } = this.state;
     const { children } = this.props;
-    
+
     if (hasError) {
-      return (
-        <h1 className={`${BLOCK_NAME}--wrapper`}>
-            {ERROR_LABES.oops}
-        </h1>
-      );
+      return <h1 className={`${BLOCK_NAME}--wrapper`}>{ERROR_LABES.oops}</h1>;
     }
 
     return children;
@@ -34,11 +30,11 @@ class ErrorBoundary extends React.Component {
 }
 
 ErrorBoundary.propTypes = {
-  children: PropTypes.node
-}
+  children: PropTypes.node,
+};
 
 ErrorBoundary.defaultProps = {
-  children: null
-}
+  children: null,
+};
 
-export { ErrorBoundary }
+export { ErrorBoundary };
