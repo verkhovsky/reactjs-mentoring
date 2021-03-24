@@ -43,7 +43,7 @@ export const MOVIES_DATA = [
   },
 ];
 
-export const GENRES_TABS = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
+export const GENRES = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
 
 export const SORT_BY = [
   {

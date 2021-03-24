@@ -5,3 +5,7 @@ export * from './Header';
 export * from './Logo';
 export * from './Search';
 export * from './SecondHeader';
+export * from './Modal';
+export * from './FormFields';
+export * from './Select';
+export * from './DatePicker';

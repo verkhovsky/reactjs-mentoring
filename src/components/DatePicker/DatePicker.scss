@@ -1,0 +1,38 @@
+.date-picker {
+  &--wrapper {
+    width: 100%;
+
+    & .react-datepicker {
+      &__input-container {
+        & > input {
+          width: 100%;
+          color: $color-white;
+          cursor: pointer;
+          font-size: 20px;
+          padding-left: 12px;
+          background-color: $color-dark-grey;
+          display: block;
+          height: 50px;
+          border-radius: 4px;
+          border: 0;
+        }
+      }
+    }
+  }
+}
+
+.react-datepicker,
+.react-datepicker-wrapper,
+.react-datepicker__input-container,
+.react-datepicker__month-container,
+.react-datepicker__input-container input {
+  width: 100%;
+}
+
+.react-datepicker__triangle {
+  display: none;
+}
+
+.react-datepicker-popper {
+  width: 50%;
+}
