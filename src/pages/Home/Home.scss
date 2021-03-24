@@ -1,0 +1,10 @@
+@import './components/Components.scss';
+
+.home {
+  &--wrapper {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $color-dark;
+    padding: 10px 50px;
+  }
+}

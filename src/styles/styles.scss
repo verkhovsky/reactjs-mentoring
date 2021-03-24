@@ -1,0 +1,12 @@
+@import './variables.scss';
+@import './mixins.scss';
+
+@import '../components/Components.scss';
+@import '../pages/Pages.scss';
+
+.App {
+  @include flexCenterCenter;
+
+  background-color: $color-grey;
+  flex-direction: column;
+}
