@@ -25,11 +25,8 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, '../build'),
-    watchContentBase: true,
-    disableHostCheck: true,
+    host: 'localhost',
     open: true,
-    hot: true,
   },
   plugins: [
     // Only update what has changed on hot reload
