@@ -1,0 +1,10 @@
+.main {
+  &--wrapper {
+    @include flexCenterCenter;
+
+    justify-content: flex-start;
+    flex-direction: column;
+    width: 1200px;
+    height: 100%;
+  }
+}
