@@ -29,7 +29,7 @@ export const Main = () => {
     );
   }, [selectedMovie]);
 
-  const secondHeaderContent = useMemo(() => {
+  const searchButton = useMemo(() => {
     if (!selectedMovie) return null;
 
     return (
@@ -44,10 +44,7 @@ export const Main = () => {
 
   return (
     <div className="main--wrapper">
-      <Header
-        headerContent={movieDetails}
-        secondHeaderContent={secondHeaderContent}
-      />
+      <Header headerContent={movieDetails} secondHeaderContent={searchButton} />
       <ErrorBoundary>
         <Home movies={MOVIES_DATA} setSelectedMovie={setSelectedMovie} />
       </ErrorBoundary>
