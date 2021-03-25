@@ -25,8 +25,7 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, '../build'),
-    port: 8080,
+    host: 'localhost',
     open: true,
   },
   plugins: [
