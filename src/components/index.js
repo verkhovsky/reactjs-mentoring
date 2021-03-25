@@ -9,3 +9,6 @@ export * from './Modal';
 export * from './FormFields';
 export * from './Select';
 export * from './DatePicker';
+export * from './ActionModal';
+export * from './Menu';
+export * from './DeleteModal';

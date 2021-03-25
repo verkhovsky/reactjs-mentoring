@@ -1,5 +1,13 @@
 import React, { useCallback } from 'react';
-import { string, node, oneOfType, arrayOf, bool, func } from 'prop-types';
+import {
+  string,
+  node,
+  oneOfType,
+  arrayOf,
+  bool,
+  func,
+  object,
+} from 'prop-types';
 import { Modal } from 'react-bootstrap';
 import classnames from 'classnames';
 import { Formik, Form } from 'formik';
@@ -64,6 +72,7 @@ ModalComponent.propTypes = {
   primaryText: string,
   secondaryText: string,
   className: string,
+  initialValues: object,
 };
 
 ModalComponent.defaultProps = {
@@ -76,6 +85,7 @@ ModalComponent.defaultProps = {
   primaryText: 'Save',
   secondaryText: undefined,
   className: undefined,
+  initialValues: {},
 };
 
 export { ModalComponent as Modal };

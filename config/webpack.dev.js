@@ -26,8 +26,8 @@ module.exports = {
   },
   devServer: {
     contentBase: path.join(__dirname, '../build'),
-    compress: true,
-    port: 8080,
+    watchContentBase: true,
+    disableHostCheck: true,
     open: true,
     hot: true,
   },

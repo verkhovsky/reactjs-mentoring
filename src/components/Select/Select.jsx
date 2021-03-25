@@ -3,9 +3,9 @@ import { arrayOf, string, func, object, number, oneOfType } from 'prop-types';
 
 import { Dropdown } from 'react-bootstrap';
 
-export const Select = ({ onSelect, value, placeholder, options }) => {
+export const Select = ({ onSelect, value, placeholder, options, name }) => {
   return (
-    <Dropdown className="dropdown--wrapper" onSelect={onSelect}>
+    <Dropdown className="dropdown--wrapper" onSelect={onSelect} name={name}>
       <Dropdown.Toggle>{value || placeholder}</Dropdown.Toggle>
       <Dropdown.Menu>
         {options.map(option => (

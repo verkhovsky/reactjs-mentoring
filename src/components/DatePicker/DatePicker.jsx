@@ -1,24 +1,37 @@
 import React from 'react';
+import { func, string, instanceOf } from 'prop-types';
 import ReactDatePicker from 'react-datepicker';
 import classnames from 'classnames';
-import { string } from 'prop-types';
 
-export const DatePicker = ({ type, className, ...props }) => {
+import { DatePickerInput } from './components';
+
+export const DatePicker = ({
+  className,
+  placeholder,
+  value,
+  onChange,
+  ...props
+}) => {
   return (
     <ReactDatePicker
       wrapperClassName={classnames('date-picker--wrapper', className)}
-      type={type}
+      customInput={<DatePickerInput placeholderText={placeholder} />}
+      onChange={onChange}
+      selected={value}
+      dateFormat="dd-MM-yyyy"
       {...props}
     />
   );
 };
 
 DatePicker.propTypes = {
-  type: string,
+  onChange: func.isRequired,
+  value: instanceOf(Date),
   className: string,
+  placeholder: string,
 };
 
 DatePicker.defaultProps = {
-  type: 'calendar',
   className: undefined,
+  placeholder: undefined,
 };

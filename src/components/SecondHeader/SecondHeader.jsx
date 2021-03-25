@@ -4,10 +4,10 @@ import { Logo } from '../Logo';
 import { Button } from '../Button';
 
 import { SECOND_HEADER_LABELS } from './constants';
-import { AddModal } from './components';
+import { ActionModal } from '../ActionModal';
 
 export const SecondHeader = () => {
-  const [isAddOpen, setAddOpen] = useState(true);
+  const [isAddOpen, setAddOpen] = useState(false);
 
   const handleAddMovie = useCallback(() => {
     setAddOpen(true);
@@ -24,7 +24,11 @@ export const SecondHeader = () => {
         {SECOND_HEADER_LABELS.addButton}
       </Button>
       {isAddOpen && (
-        <AddModal isOpen={isAddOpen} onClose={handleCloseMovie}></AddModal>
+        <ActionModal
+          isOpen={isAddOpen}
+          onClose={handleCloseMovie}
+          header={SECOND_HEADER_LABELS.addMovie}
+        />
       )}
     </div>
   );

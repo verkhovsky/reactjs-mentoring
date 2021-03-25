@@ -21,7 +21,14 @@ export const SelectField = ({
         id={id}
         name={name}
         placeholder={placeholder}
-        component={Select}
+        component={({ field: { value, onChange, name }, ...rest }) => (
+          <Select
+            onSelect={onChange(name)}
+            value={value}
+            name={name}
+            {...rest}
+          />
+        )}
         {...props}
       />
     </div>
@@ -36,4 +43,9 @@ SelectField.propTypes = {
   className: string,
 };
 
-SelectField.defaultProps = {};
+SelectField.defaultProps = {
+  id: undefined,
+  placeholder: undefined,
+  label: undefined,
+  className: undefined,
+};
