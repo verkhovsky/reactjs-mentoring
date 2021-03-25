@@ -1,14 +1,14 @@
 module.exports = {
-  roots: ['<rootDir>/config/jest'],
   transform: {
     '\\.(js|jsx)?$': 'babel-jest'
   },
-  testMatch: ['<rootDir>/src/**/*.(spec|test).js?(x)'],
+  testMatch: [ 
+    '**/__tests__/**/*.(js|ts|tsx)', 
+    '**/?(*.)+(spec|test).(js|ts|tsx)', 
+  ], 
   moduleFileExtensions: ['js', 'jsx', 'json', 'node'],
   testPathIgnorePatterns: ['/node_modules/', '/public/'],
-  setupFilesAfterEnv: [
-    '@testing-library/jest-dom/extend-expect',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.js'],
   moduleNameMapper: {
     '\\.(css|scss)$': '<rootDir>/config/jest/mocks/styleMock.js',
   }

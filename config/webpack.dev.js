@@ -25,11 +25,8 @@ module.exports = {
     ],
   },
   devServer: {
-    contentBase: path.join(__dirname, '../build'),
-    compress: true,
-    port: 8080,
+    host: 'localhost',
     open: true,
-    hot: true,
   },
   plugins: [
     // Only update what has changed on hot reload
