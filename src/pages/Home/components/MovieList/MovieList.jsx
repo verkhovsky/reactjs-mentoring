@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { arrayOf, object } from 'prop-types';
+import { arrayOf, object, func } from 'prop-types';
 
 import { getResultsText } from 'src/utils/utils';
 import { ActionModal, DeleteModal } from 'src/components';
@@ -9,8 +9,9 @@ import { MOVIE_LABELS } from '../../constants';
 
 const MENU_OPTIONS = ['edit', 'delete'];
 
-export const MovieList = ({ movies }) => {
+export const MovieList = ({ movies, onItemClick }) => {
   const [actionModal, setActionModal] = useState({});
+
   const handleMenuSelect = useCallback(
     (movieId, action) => {
       const menuSelectedMovie = movies.find(movie => movie.id === movieId);
@@ -66,12 +67,14 @@ export const MovieList = ({ movies }) => {
         {getResultsText(movies)}
       </h2>
       <ul className="movie-list--list">
-        {movies.map(({ id, ...item }) => (
+        {movies.map(({ id, releaseDate, ...item }) => (
           <Card
             key={id}
             id={id}
             onMenuSelect={handleMenuSelect}
+            onItemClick={onItemClick}
             menuOptions={MENU_OPTIONS}
+            releaseYear={releaseDate.getFullYear()}
             {...item}
           />
         ))}
@@ -83,6 +86,7 @@ export const MovieList = ({ movies }) => {
 
 MovieList.propTypes = {
   movies: arrayOf(object),
+  onItemClick: func.isRequired,
 };
 
 MovieList.defaultProps = {

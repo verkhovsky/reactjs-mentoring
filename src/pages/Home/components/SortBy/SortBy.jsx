@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { SORT_BY } from 'src/mocks/movies';
+
 import { SORT_BY_LABELS } from './constants';
 
 export const SortBy = () => {

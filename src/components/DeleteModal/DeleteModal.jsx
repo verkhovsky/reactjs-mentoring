@@ -9,9 +9,9 @@ import {
   node,
   arrayOf,
 } from 'prop-types';
+import classnames from 'classnames';
 
 import { Modal } from 'src/components';
-import classnames from 'classnames';
 
 export const DeleteModal = ({
   isOpen,

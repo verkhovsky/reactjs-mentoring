@@ -11,6 +11,7 @@ import {
   number,
   oneOf,
 } from 'prop-types';
+import classnames from 'classnames';
 
 import { GENRES } from 'src/mocks/movies';
 import { Modal } from 'src/components';
@@ -19,7 +20,6 @@ import {
   SelectField,
   DatePickerField,
 } from 'src/components/FormFields';
-import classnames from 'classnames';
 
 export const ActionModal = ({
   isOpen,

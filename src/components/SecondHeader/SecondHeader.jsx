@@ -1,12 +1,13 @@
 import React, { useCallback, useState } from 'react';
+import { arrayOf, oneOfType, node } from 'prop-types';
 
 import { Logo } from '../Logo';
 import { Button } from '../Button';
-
-import { SECOND_HEADER_LABELS } from './constants';
 import { ActionModal } from '../ActionModal';
 
-export const SecondHeader = () => {
+import { SECOND_HEADER_LABELS } from './constants';
+
+export const SecondHeader = ({ content }) => {
   const [isAddOpen, setAddOpen] = useState(false);
 
   const handleAddMovie = useCallback(() => {
@@ -20,9 +21,11 @@ export const SecondHeader = () => {
   return (
     <div className="second-header--wrapper">
       <Logo />
-      <Button className="second-header--button" onClick={handleAddMovie}>
-        {SECOND_HEADER_LABELS.addButton}
-      </Button>
+      {content || (
+        <Button className="second-header--button" onClick={handleAddMovie}>
+          {SECOND_HEADER_LABELS.addButton}
+        </Button>
+      )}
       {isAddOpen && (
         <ActionModal
           isOpen={isAddOpen}
@@ -32,4 +35,12 @@ export const SecondHeader = () => {
       )}
     </div>
   );
+};
+
+SecondHeader.propTypes = {
+  content: oneOfType([arrayOf(node), node]),
+};
+
+SecondHeader.defaultProps = {
+  content: null,
 };

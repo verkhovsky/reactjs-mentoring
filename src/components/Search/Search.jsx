@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Button } from '../Button';
+
 import { SEARCH_LABELS } from './constants';
 
 export const Search = () => {

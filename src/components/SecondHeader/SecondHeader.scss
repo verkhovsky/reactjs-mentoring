@@ -2,6 +2,8 @@
   &--wrapper {
     display: flex;
     justify-content: space-between;
+    height: 50px;
+    align-items: center;
   }
 
   &--button {
@@ -11,6 +13,16 @@
     font-weight: bold;
     color: $color-red;
     background: $color-grey;
+    opacity: 0.9;
+  }
+
+  &--search-button {
+    font-size: 22px;
+    font-weight: bold;
+    height: auto;
+    width: auto;
+    background: transparent;
+    color: $color-red;
     opacity: 0.9;
   }
 }

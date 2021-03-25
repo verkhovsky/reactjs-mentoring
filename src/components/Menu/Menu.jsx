@@ -47,6 +47,7 @@ export const Menu = forwardRef(
 );
 
 Menu.propTypes = {
+  className: string,
   align: oneOf(['right', 'left']),
   options: arrayOf(string),
   onSelect: func,
@@ -55,6 +56,7 @@ Menu.propTypes = {
 };
 
 Menu.defaultProps = {
+  className: undefined,
   align: 'right',
   options: [],
   onSelect: () => {},

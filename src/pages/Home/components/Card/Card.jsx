@@ -1,78 +1,78 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
-import {
-  arrayOf,
-  number,
-  oneOfType,
-  string,
-  func,
-  instanceOf,
-} from 'prop-types';
+import React, { useCallback, useState, useRef } from 'react';
+import { arrayOf, number, oneOfType, string, func } from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 import { Button, Menu } from 'src/components';
+import { useClickOutside } from 'src/hooks/useClickOutside';
 
 export const Card = ({
   imageUrl,
   title,
   genre,
-  releaseDate,
+  releaseYear,
   id,
   onMenuSelect,
   menuOptions,
+  onItemClick,
 }) => {
   const [isMenuOpen, setMenuOpen] = useState(false);
 
+  const ref = useRef(null);
   const menuRef = useRef(null);
 
   const handleActionClick = useCallback(() => {
     setMenuOpen(isOpen => !isOpen);
   }, []);
 
+  const handleMenuClose = useCallback(() => {
+    setMenuOpen(false);
+  }, []);
+
   const handleMenuItemSelect = useCallback(
     action => {
       onMenuSelect(id, action);
-      setMenuOpen(false);
+      handleMenuClose();
     },
-    [onMenuSelect, id],
+    [onMenuSelect, id, handleMenuClose],
   );
 
-  const handleOutsideClick = useCallback(e => {
-    if (menuRef.current && !menuRef.current.contains(e.target)) {
-      setMenuOpen(false);
-    }
-  }, []);
+  const handleImageClick = useCallback(() => {
+    onItemClick(id);
+  }, [id, onItemClick]);
 
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.addEventListener('mousedown', handleOutsideClick);
-    } else {
-      document.removeEventListener('mousedown', handleOutsideClick);
-    }
-  }, [isMenuOpen, handleOutsideClick]);
+  useClickOutside(ref.current, handleMenuClose);
 
   return (
     <li className="movie-card--item">
-      <img className="movie-card--image" src={imageUrl} alt="" />
+      <img
+        className="movie-card--image"
+        src={imageUrl}
+        alt=""
+        onClick={handleImageClick}
+      />
       <div className="movie-card--description">
         <span className="movie-card--title">{title}</span>
-        <span className="movie-card--release-date">
-          {releaseDate.getFullYear()}
-        </span>
+        <span className="movie-card--release-date">{releaseYear}</span>
       </div>
       <span className="movie-card--genre">{genre}</span>
-      <Button className="movie-card--action-button" onClick={handleActionClick}>
-        <FontAwesomeIcon icon={faEllipsisV} />
-      </Button>
-      {isMenuOpen && (
-        <Menu
-          className="movie-card--menu"
-          options={menuOptions}
-          show={isMenuOpen}
-          onSelect={handleMenuItemSelect}
-          ref={menuRef}
-        />
-      )}
+      <div ref={ref} className="movie-card--menu-wrapper">
+        <Button
+          className="movie-card--action-button"
+          onClick={handleActionClick}
+        >
+          <FontAwesomeIcon icon={faEllipsisV} />
+        </Button>
+        {isMenuOpen && (
+          <Menu
+            className="movie-card--menu"
+            options={menuOptions}
+            show={isMenuOpen}
+            onSelect={handleMenuItemSelect}
+            ref={menuRef}
+          />
+        )}
+      </div>
     </li>
   );
 };
@@ -82,8 +82,9 @@ Card.propTypes = {
   imageUrl: string.isRequired,
   title: string.isRequired,
   genre: string.isRequired,
-  releaseDate: instanceOf(Date).isRequired,
+  releaseYear: number.isRequired,
   onMenuSelect: func.isRequired,
+  onItemClick: func.isRequired,
   menuOptions: arrayOf(string),
 };
 

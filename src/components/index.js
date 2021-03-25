@@ -12,3 +12,4 @@ export * from './DatePicker';
 export * from './ActionModal';
 export * from './Menu';
 export * from './DeleteModal';
+export * from './MovieDetails';

@@ -1,4 +1,3 @@
-const path = require('path');
 const { HotModuleReplacementPlugin } = require('webpack');
 
 module.exports = {

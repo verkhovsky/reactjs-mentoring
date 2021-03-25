@@ -9,7 +9,8 @@
     "test:watch": "jest --watchAll --runInBand --verbose",
     "test:update": "jest --updateSnapshot",
     "test:clear": "jest --clearCache",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "eslint": "eslint . --ext .js,.jsx --fix --ignore-pattern node_modules/"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -41,6 +42,7 @@
     "copy-webpack-plugin": "^8.1.0",
     "css-loader": "^5.0.2",
     "eslint": "^7.22.0",
+    "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-flowtype": "^5.4.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jsx-a11y": "^6.4.1",
