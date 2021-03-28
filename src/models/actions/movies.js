@@ -22,23 +22,6 @@ export const setCreatedMovie = payload => ({ type: ADD_MOVIE, payload });
 export const setUpdatedMovie = payload => ({ type: UPDATE_MOVIE, payload });
 export const setDeleteMovie = payload => ({ type: DELETE_MOVIE, payload });
 
-// export const updateStoreMovie = (movie, callback) => (dispatch, getStore) => {
-//   const store = getStore();
-//   const movies = store.movies.movies;
-//   const moviesData = movies.data;
-
-//   const newMovies = moviesData.map(currentMovie =>
-//     currentMovie.id !== movie.id ? currentMovie : movie,
-//   );
-
-//   dispatch(
-//     setMovies({
-//       ...movies,
-//       data: newMovies,
-//     }),
-//   );
-// };
-
 export const fetchMovies = async dispatch => {
   try {
     dispatch(setLoading(true));
