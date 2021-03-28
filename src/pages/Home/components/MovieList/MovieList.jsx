@@ -40,7 +40,6 @@ export const MovieList = ({ movies, onItemClick }) => {
   const handleEditMovie = useCallback(
     movie => {
       dispatch(editMovie(movie));
-      //console.log(movie);
     },
     [dispatch],
   );
