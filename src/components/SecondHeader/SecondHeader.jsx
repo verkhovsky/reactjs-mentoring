@@ -1,5 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import { arrayOf, oneOfType, node } from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { addMovie } from 'src/models/actions/movies';
 
 import { Logo } from '../Logo';
 import { Button } from '../Button';
@@ -10,6 +13,8 @@ import { SECOND_HEADER_LABELS } from './constants';
 export const SecondHeader = ({ content }) => {
   const [isAddOpen, setAddOpen] = useState(false);
 
+  const dispatch = useDispatch();
+
   const handleAddMovie = useCallback(() => {
     setAddOpen(true);
   }, [setAddOpen]);
@@ -17,6 +22,13 @@ export const SecondHeader = ({ content }) => {
   const handleCloseMovie = useCallback(() => {
     setAddOpen(false);
   }, [setAddOpen]);
+
+  const handleCreateMovie = useCallback(
+    movie => {
+      dispatch(addMovie(movie));
+    },
+    [dispatch],
+  );
 
   return (
     <div className="second-header--wrapper">
@@ -31,6 +43,7 @@ export const SecondHeader = ({ content }) => {
           isOpen={isAddOpen}
           onClose={handleCloseMovie}
           header={SECOND_HEADER_LABELS.addMovie}
+          onSubmit={handleCreateMovie}
         />
       )}
     </div>

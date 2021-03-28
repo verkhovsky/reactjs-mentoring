@@ -4,6 +4,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const config = require('./config.json');
+
+const environment = process.env.ENVIRONMENT || 'dev';
+
 module.exports = {
   entry: './src/index.js',
   output: {
@@ -43,7 +47,8 @@ module.exports = {
       ],
     }),
     new DefinePlugin({
-      ENV: JSON.stringify(process.env.ENVIRONMENT),
+      'process.env.ENV': JSON.stringify(environment),
+      'process.env.API_URL': JSON.stringify(config.BASE_API_URL),
     }),
   ],
 };

@@ -4,19 +4,15 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-  }
+    width: 305px;
 
-  &--sort-label {
-    text-transform: uppercase;
-    color: $color-white;
-    font-size: 18px;
-    line-height: 1;
-    cursor: pointer;
+    & .dropdown__control {
+      background-color: transparent !important;
+      border-color: transparent !important;
+    }
 
-    &::after {
-      content: '\25bc';
-      margin-left: 10px;
-      color: $color-red;
+    & .dropdown__single-value {
+      text-transform: uppercase;
     }
   }
 
@@ -25,10 +21,7 @@
     color: $color-grey;
     font-size: 18px;
     line-height: 1;
-    margin-right: 30px;
-  }
-
-  &--list {
-    display: none;
+    margin-right: 15px;
+    width: 120px;
   }
 }

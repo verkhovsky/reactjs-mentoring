@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import classnames from 'classnames';
 import { number, oneOfType, string } from 'prop-types';
+
+import { defaultImageURL } from 'src/mocks/movies';
 
 export const MovieDetails = ({
   className,
@@ -12,9 +14,18 @@ export const MovieDetails = ({
   runtime,
   overview,
 }) => {
+  const handleImageError = useCallback(e => {
+    e.target.src = defaultImageURL;
+  }, []);
+
   return (
     <section className={classnames('movie-details--wrapper', className)}>
-      <img className="movie-details--image" src={imageUrl} alt="" />
+      <img
+        className="movie-details--image"
+        src={imageUrl}
+        alt=""
+        onError={handleImageError}
+      />
       <div className="movie-details--content">
         <div className="movie-details--title-info">
           <span className="movie-details--title">{title}</span>

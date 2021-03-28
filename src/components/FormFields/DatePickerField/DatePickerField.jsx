@@ -14,30 +14,28 @@ export const DatePickerField = ({
   label,
   className,
   ...props
-}) => {
-  return (
-    <div className={classnames('datepicker-filed--wrapper', className)}>
-      {!!label && <Label label={label} />}
-      <Field
-        id={id}
-        name={name}
-        placeholder={placeholder}
-        component={({
-          field: { value, name },
-          form: { setFieldValue },
-          ...rest
-        }) => (
-          <DatePicker
-            value={value}
-            onChange={partial(setFieldValue, name)}
-            {...rest}
-          />
-        )}
-        {...props}
-      />
-    </div>
-  );
-};
+}) => (
+  <div className={classnames('datepicker-filed--wrapper', className)}>
+    {!!label && <Label label={label} />}
+    <Field
+      id={id}
+      name={name}
+      placeholder={placeholder}
+      component={({
+        field: { value, name },
+        form: { setFieldValue },
+        ...rest
+      }) => (
+        <DatePicker
+          value={value ? new Date(value) : value}
+          onChange={partial(setFieldValue, name)}
+          {...rest}
+        />
+      )}
+      {...props}
+    />
+  </div>
+);
 
 DatePickerField.propTypes = {
   name: string.isRequired,
