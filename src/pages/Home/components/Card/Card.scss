@@ -22,7 +22,7 @@
 
   &--image {
     width: 100%;
-    height: 450px;
+    height: 500px;
     margin-bottom: 15px;
   }
 
@@ -73,5 +73,10 @@
     & > svg {
       color: $color-white;
     }
+  }
+
+  &--menu {
+    right: 10px !important;
+    top: 50px !important;
   }
 }

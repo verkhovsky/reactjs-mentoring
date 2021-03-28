@@ -1,0 +1,29 @@
+.dropdown-menu {
+  &--wrapper {
+    opacity: 1 !important;
+    pointer-events: all !important;
+    background-color: $color-dark;
+    padding: 0;
+    border: 0;
+    border-radius: 3px;
+
+    & .dropdown-item {
+      font-size: 20px;
+      color: $color-white;
+      cursor: pointer;
+      text-transform: capitalize;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $color-white;
+        background-color: $color-red;
+      }
+    }
+  }
+
+  &--right {
+    right: 0 !important;
+    left: auto !important;
+  }
+}

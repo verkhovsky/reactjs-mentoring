@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
 import classnames from 'classnames';
 
-import { GENRES_TABS } from 'src/mocks/movies';
+import { GENRES } from 'src/mocks/movies';
 
 export const FilterGenres = () => {
-  const [selectedGenre, setSelectedGenre] = useState(GENRES_TABS[0]);
+  const [selectedGenre, setSelectedGenre] = useState(GENRES[0]);
 
   const handleOnGengeClick = useCallback(e => {
     const genre = e.target.id;
@@ -17,7 +17,7 @@ export const FilterGenres = () => {
   return (
     <div className="filter-genres--wrapper">
       <ul className="filter-genres--list" onClick={handleOnGengeClick}>
-        {GENRES_TABS.map(value => (
+        {GENRES.map(value => (
           <li
             id={value}
             key={value}

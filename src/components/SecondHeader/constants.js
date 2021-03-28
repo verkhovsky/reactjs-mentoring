@@ -1,3 +1,4 @@
 export const SECOND_HEADER_LABELS = {
-    addButton: '+ Add Movie'
-}
+  addButton: '+ Add Movie',
+  addMovie: 'Add Movie',
+};
