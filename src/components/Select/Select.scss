@@ -3,41 +3,37 @@
     width: 100%;
   }
 
-  & .dropdown-toggle,
-  & .dropdown-toggle:hover,
-  & .dropdown-toggle:active {
-    width: 100%;
-    height: 50px;
-    font-size: 20px;
-    color: $color-white;
+  &__control {
     background-color: $color-dark-grey !important;
     border-color: $color-dark-grey !important;
-    text-align: left;
-    border: 0;
-
-    &::after {
-      position: absolute;
-      right: 18px;
-      top: 22px;
-      border-top: 8px solid;
-      border-right: 8px solid transparent;
-      border-left: 8px solid transparent;
-      color: $color-red;
-    }
+    min-height: 50px !important;
   }
 
-  & .dropdown-menu {
+  &__single-value {
+    color: $color-white !important;
+    font-size: 20px;
+  }
+
+  &__menu-list {
     width: 100%;
     background-color: $color-dark;
   }
 
-  & .dropdown-item {
-    font-size: 20px;
-    color: $color-white;
+  &__option {
+    font-size: 20px !important;
+    color: $color-white !important;
+    background-color: $color-dark !important;
 
     &:hover {
-      color: $color-white;
-      background-color: $color-red;
+      background-color: $color-red !important;
     }
+  }
+
+  &__indicator-separator {
+    display: none;
+  }
+
+  &__dropdown-indicator {
+    color: $color-red !important;
   }
 }

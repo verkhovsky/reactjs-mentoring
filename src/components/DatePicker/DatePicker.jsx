@@ -11,18 +11,16 @@ export const DatePicker = ({
   value,
   onChange,
   ...props
-}) => {
-  return (
-    <ReactDatePicker
-      wrapperClassName={classnames('date-picker--wrapper', className)}
-      customInput={<DatePickerInput placeholderText={placeholder} />}
-      onChange={onChange}
-      selected={value}
-      dateFormat="dd-MM-yyyy"
-      {...props}
-    />
-  );
-};
+}) => (
+  <ReactDatePicker
+    wrapperClassName={classnames('date-picker--wrapper', className)}
+    customInput={<DatePickerInput placeholderText={placeholder} />}
+    onChange={onChange}
+    selected={value}
+    dateFormat="dd-MM-yyyy"
+    {...props}
+  />
+);
 
 DatePicker.propTypes = {
   onChange: func.isRequired,
@@ -34,4 +32,5 @@ DatePicker.propTypes = {
 DatePicker.defaultProps = {
   className: undefined,
   placeholder: undefined,
+  value: undefined,
 };

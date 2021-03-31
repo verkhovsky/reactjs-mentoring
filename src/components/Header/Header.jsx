@@ -4,8 +4,7 @@ import { oneOfType, arrayOf, node } from 'prop-types';
 import { SecondHeader } from '../SecondHeader';
 import { Search } from '../Search';
 
-export const Header = ({ headerContent, secondHeaderContent }) => {
-  return (
+export const Header = ({ headerContent, secondHeaderContent }) => (
     <header className="header--wrapper">
       <div className="header--overlay">
         <div className="header--content">
@@ -15,7 +14,6 @@ export const Header = ({ headerContent, secondHeaderContent }) => {
       </div>
     </header>
   );
-};
 
 Header.propTypes = {
   headerContent: oneOfType([arrayOf(node), node]),

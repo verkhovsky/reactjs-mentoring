@@ -1,19 +1,37 @@
-import React from 'react';
+import React, { useCallback, useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { SORT_BY } from 'src/mocks/movies';
+import { Select } from 'src/components/Select';
+import { setSortBy } from 'src/models/actions/movies';
+import { getSortBy } from 'src/models/selectors/movies';
 
 import { SORT_BY_LABELS } from './constants';
 
 export const SortBy = () => {
+  const dispatch = useDispatch();
+  const sortBy = useSelector(getSortBy);
+
+  const currentValue = useMemo(
+    () => SORT_BY.find(({ value }) => value === sortBy),
+    [sortBy],
+  );
+
+  const handleOnChange = useCallback(
+    ({ value }) => {
+      dispatch(setSortBy(value));
+    },
+    [dispatch],
+  );
+
   return (
     <div className="sort-by--wrapper">
       <span className="sort-by--label">{SORT_BY_LABELS.sortBy}</span>
-      <span className="sort-by--sort-label">{SORT_BY[0].value}</span>
-      <ul className="sort-by--list">
-        {SORT_BY.map(({ value, id }) => (
-          <li key={id}>{value}</li>
-        ))}
-      </ul>
+      <Select
+        options={SORT_BY}
+        onChange={handleOnChange}
+        value={currentValue}
+      />
     </div>
   );
 };

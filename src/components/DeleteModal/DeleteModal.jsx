@@ -20,20 +20,20 @@ export const DeleteModal = ({
   className,
   header,
   text,
-}) => {
-  return (
-    <Modal
-      className={classnames('delete-modal--wrapper', className)}
-      isOpen={isOpen}
-      onClose={onClose}
-      header={header}
-      initialValues={initialValues}
-      primaryText="Confirm"
-    >
-      {text}
-    </Modal>
-  );
-};
+  onSubmit,
+}) => (
+  <Modal
+    className={classnames('delete-modal--wrapper', className)}
+    isOpen={isOpen}
+    onClose={onClose}
+    header={header}
+    initialValues={initialValues}
+    primaryText="Confirm"
+    onSubmit={onSubmit}
+  >
+    {text}
+  </Modal>
+);
 
 DeleteModal.propTypes = {
   initialValues: shape({
@@ -44,6 +44,7 @@ DeleteModal.propTypes = {
   onClose: func,
   header: oneOfType([arrayOf(node), node]),
   text: string.isRequired,
+  onSubmit: func,
 };
 
 DeleteModal.defaultProps = {
@@ -52,4 +53,5 @@ DeleteModal.defaultProps = {
   isOpen: false,
   onClose: () => {},
   header: null,
+  onSubmit: () => {},
 };

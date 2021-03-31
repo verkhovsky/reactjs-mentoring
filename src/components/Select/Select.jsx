@@ -1,32 +1,31 @@
 import React from 'react';
-import { arrayOf, string, func, object, number, oneOfType } from 'prop-types';
-import { Dropdown } from 'react-bootstrap';
+import { arrayOf, string, func, object, oneOfType, bool } from 'prop-types';
+import ReactSelect from 'react-select';
 
-export const Select = ({ onSelect, value, placeholder, options }) => {
-  return (
-    <Dropdown className="dropdown--wrapper" onSelect={onSelect}>
-      <Dropdown.Toggle>{value || placeholder}</Dropdown.Toggle>
-      <Dropdown.Menu>
-        {options.map(option => (
-          <Dropdown.Item key={option} eventKey={option}>
-            {option}
-          </Dropdown.Item>
-        ))}
-      </Dropdown.Menu>
-    </Dropdown>
-  );
-};
+export const Select = ({ onChange, value, placeholder, options, isMulti }) => (
+  <ReactSelect
+    classNamePrefix="dropdown"
+    className="dropdown--wrapper"
+    options={options}
+    placeholder={placeholder}
+    value={value}
+    onChange={onChange}
+    isMulti={isMulti}
+  />
+);
 
 Select.propTypes = {
-  onSelect: func,
-  value: string,
+  onChange: func,
+  value: oneOfType([object, arrayOf(object)]),
   placeholder: string,
-  options: arrayOf(oneOfType([string, object, number])),
+  isMulti: bool,
+  options: arrayOf(oneOfType([object])),
 };
 
 Select.defaultProps = {
-  onSelect: () => {},
+  onChange: () => {},
   value: undefined,
   placeholder: undefined,
+  isMulti: false,
   options: [],
 };
