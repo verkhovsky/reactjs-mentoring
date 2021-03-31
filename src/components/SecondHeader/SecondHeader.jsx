@@ -1,13 +1,19 @@
 import React, { useCallback, useState } from 'react';
+import { arrayOf, oneOfType, node } from 'prop-types';
+import { useDispatch } from 'react-redux';
+
+import { addMovie } from 'src/models/actions/movies';
 
 import { Logo } from '../Logo';
 import { Button } from '../Button';
-
-import { SECOND_HEADER_LABELS } from './constants';
 import { ActionModal } from '../ActionModal';
 
-export const SecondHeader = () => {
+import { SECOND_HEADER_LABELS } from './constants';
+
+export const SecondHeader = ({ content }) => {
   const [isAddOpen, setAddOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const handleAddMovie = useCallback(() => {
     setAddOpen(true);
@@ -17,19 +23,37 @@ export const SecondHeader = () => {
     setAddOpen(false);
   }, [setAddOpen]);
 
+  const handleCreateMovie = useCallback(
+    movie => {
+      dispatch(addMovie(movie));
+    },
+    [dispatch],
+  );
+
   return (
     <div className="second-header--wrapper">
       <Logo />
-      <Button className="second-header--button" onClick={handleAddMovie}>
-        {SECOND_HEADER_LABELS.addButton}
-      </Button>
+      {content || (
+        <Button className="second-header--button" onClick={handleAddMovie}>
+          {SECOND_HEADER_LABELS.addButton}
+        </Button>
+      )}
       {isAddOpen && (
         <ActionModal
           isOpen={isAddOpen}
           onClose={handleCloseMovie}
           header={SECOND_HEADER_LABELS.addMovie}
+          onSubmit={handleCreateMovie}
         />
       )}
     </div>
   );
+};
+
+SecondHeader.propTypes = {
+  content: oneOfType([arrayOf(node), node]),
+};
+
+SecondHeader.defaultProps = {
+  content: null,
 };

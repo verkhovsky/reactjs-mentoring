@@ -12,14 +12,12 @@ export const InputField = ({
   label,
   className,
   ...props
-}) => {
-  return (
+}) => (
     <div className={classnames('input-field--wrapper', className)}>
       {!!label && <Label label={label} />}
       <Field id={id} name={name} placeholder={placeholder} {...props} />
     </div>
   );
-};
 
 InputField.propTypes = {
   name: string.isRequired,

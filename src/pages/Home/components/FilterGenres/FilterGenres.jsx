@@ -1,28 +1,35 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import classnames from 'classnames';
 
-import { GENRES } from 'src/mocks/movies';
+import { FILTER_GENRES } from 'src/mocks/movies';
+import { setFilterBy } from 'src/models/actions/movies';
+import { getFilterBy } from 'src/models/selectors/movies';
 
 export const FilterGenres = () => {
-  const [selectedGenre, setSelectedGenre] = useState(GENRES[0]);
+  const dispatch = useDispatch();
+  const filterBy = useSelector(getFilterBy);
 
-  const handleOnGengeClick = useCallback(e => {
-    const genre = e.target.id;
+  const handleOnGengeClick = useCallback(
+    e => {
+      const genre = e.target.id;
 
-    if (genre) {
-      setSelectedGenre(genre);
-    }
-  }, []);
+      if (genre) {
+        dispatch(setFilterBy(genre));
+      }
+    },
+    [dispatch],
+  );
 
   return (
     <div className="filter-genres--wrapper">
       <ul className="filter-genres--list" onClick={handleOnGengeClick}>
-        {GENRES.map(value => (
+        {FILTER_GENRES.map(value => (
           <li
             id={value}
             key={value}
             className={classnames('filter-genres--item', {
-              'filter-genres--item-active': selectedGenre === value,
+              'filter-genres--item-active': filterBy === value,
             })}
             value={value}
           >

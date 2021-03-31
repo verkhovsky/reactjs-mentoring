@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { arrayOf, func, object } from 'prop-types';
 
-import { MOVIES_DATA } from 'src/mocks/movies';
 import { MovieList, FilterPanel } from './components';
 
-export const Home = () => {
+export const Home = ({ movies, setSelectedMovie }) => {
+  const handleItemClick = useCallback(
+    id => {
+      const currentMovie = movies.find(movie => movie.id === id);
+      setSelectedMovie(currentMovie);
+    },
+    [movies, setSelectedMovie],
+  );
+
   return (
     <div className="home--wrapper">
-      <FilterPanel></FilterPanel>
-      <MovieList movies={MOVIES_DATA}></MovieList>
+      <FilterPanel />
+      <MovieList movies={movies} onItemClick={handleItemClick} />
     </div>
   );
+};
+
+Home.propTypes = {
+  setSelectedMovie: func.isRequired,
+  movies: arrayOf(object),
 };
