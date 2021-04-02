@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import {
   string,
   shape,
@@ -18,7 +18,10 @@ import {
   InputField,
   SelectField,
   DatePickerField,
+  TextField,
 } from 'src/components/FormFields';
+
+import { ActionModalSchema } from './validation';
 
 export const ActionModal = ({
   isOpen,
@@ -27,44 +30,61 @@ export const ActionModal = ({
   className,
   header,
   onSubmit,
-}) => (
-  <Modal
-    className={classnames('action-modal--wrapper', className)}
-    isOpen={isOpen}
-    onClose={onClose}
-    header={header}
-    initialValues={initialValues}
-    onSubmit={onSubmit}
-    secondaryText="Reset"
-    primaryText="Submit"
-  >
-    <InputField name="title" placeholder="Title" label="Title" />
-    <DatePickerField
-      name="release_date"
-      placeholder="Select Date"
-      label="Release date"
-    />
-    <InputField
-      name="poster_path"
-      placeholder="Movie URL here"
-      label="Movie url"
-    />
-    <SelectField
-      name="genres"
-      placeholder="Select genres"
-      label="Genres"
-      options={GENRES}
-      isMulti
-    />
-    <InputField name="overview" placeholder="Overview here" label="Overview" />
-    <InputField
-      name="runtime"
-      placeholder="Runtime here"
-      label="Runtime"
-      type="number"
-    />
-  </Modal>
-);
+}) => {
+  const onResetClick = useCallback(({ resetForm }) => {
+    resetForm();
+  }, []);
+
+  return (
+    <Modal
+      className={classnames('action-modal--wrapper', className)}
+      isOpen={isOpen}
+      onClose={onClose}
+      header={header}
+      initialValues={initialValues}
+      onSubmit={onSubmit}
+      validationSchema={ActionModalSchema}
+      onClickSecondary={onResetClick}
+      secondaryText="Reset"
+      primaryText="Submit"
+    >
+      {initialValues.id && <TextField name="id" label="Movie id" />}
+      <InputField name="title" placeholder="Title" label="Title" required />
+      <DatePickerField
+        name="release_date"
+        placeholder="Select Date"
+        label="Release date"
+      />
+      <InputField
+        name="poster_path"
+        placeholder="Movie URL here"
+        label="Movie url"
+        required
+      />
+      <SelectField
+        name="genres"
+        placeholder="Select genres"
+        label="Genres"
+        options={GENRES}
+        isMulti
+        required
+      />
+      <InputField
+        name="overview"
+        placeholder="Overview here"
+        label="Overview"
+        required
+      />
+      <InputField
+        name="runtime"
+        placeholder="Runtime here"
+        label="Runtime"
+        type="number"
+        required
+      />
+    </Modal>
+  );
+};
 
 ActionModal.propTypes = {
   initialValues: shape({
@@ -85,6 +105,7 @@ ActionModal.propTypes = {
 ActionModal.defaultProps = {
   className: undefined,
   initialValues: {
+    id: '',
     title: '',
     poster_path: '',
     overview: '',

@@ -54,7 +54,7 @@ export const editMovie = movie => async dispatch => {
 export const removeMovie = id => async dispatch => {
   try {
     await deleteMovie(id);
-
+    console.log('qwe');
     dispatch(setDeleteMovie(id));
   } catch (e) {}
 };

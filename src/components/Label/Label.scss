@@ -1,7 +1,16 @@
 .label {
   &--wrapper {
+    display: flex;
+  }
+
+  &--text {
     text-transform: uppercase;
     font-weight: bold;
     color: $color-red;
+  }
+
+  &--required {
+    color: red;
+    margin-left: 4px;
   }
 }

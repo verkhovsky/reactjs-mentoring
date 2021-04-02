@@ -1,0 +1,7 @@
+.text-field {
+  &--wrapper {
+    display: flex;
+    text-transform: uppercase;
+    flex-direction: column;
+  }
+}

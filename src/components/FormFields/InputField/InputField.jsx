@@ -1,30 +1,35 @@
 import React from 'react';
-import { Field } from 'formik';
+import { Field, useField } from 'formik';
 import classnames from 'classnames';
-import { string } from 'prop-types';
+import { string, bool } from 'prop-types';
 
 import { Label } from '../../Label';
 
 export const InputField = ({
   id,
-  name,
   placeholder,
   label,
   className,
+  required,
   ...props
-}) => (
+}) => {
+  const [field, { error, touched }] = useField(props);
+
+  return (
     <div className={classnames('input-field--wrapper', className)}>
-      {!!label && <Label label={label} />}
-      <Field id={id} name={name} placeholder={placeholder} {...props} />
+      {!!label && <Label label={label} required={required} />}
+      <Field placeholder={placeholder} id={id} {...field} {...props} />
+      {error && touched && <span className="input-field--error">{error}</span>}
     </div>
   );
+};
 
 InputField.propTypes = {
-  name: string.isRequired,
   id: string,
   placeholder: string,
   label: string,
   className: string,
+  required: bool,
 };
 
 InputField.defaultProps = {
@@ -32,4 +37,5 @@ InputField.defaultProps = {
   placeholder: undefined,
   label: undefined,
   className: undefined,
+  required: false,
 };

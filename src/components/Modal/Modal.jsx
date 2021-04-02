@@ -7,10 +7,12 @@ import {
   bool,
   func,
   object,
+  oneOf,
 } from 'prop-types';
 import { Modal } from 'react-bootstrap';
 import classnames from 'classnames';
 import { Formik, Form } from 'formik';
+import partial from 'lodash/partial';
 
 import { Button } from '../Button';
 
@@ -19,12 +21,14 @@ const ModalComponent = ({
   children,
   isOpen,
   onClose,
+  size,
   primaryText,
   secondaryText,
   className,
   onClickSecondary,
   initialValues,
   onSubmit,
+  validationSchema,
 }) => {
   const handleOnHide = useCallback(() => {
     onClose();
@@ -37,26 +41,37 @@ const ModalComponent = ({
       onHide={handleOnHide}
       keyboard={false}
       centered
-      size="lg"
+      size={size}
     >
-      <Formik initialValues={initialValues} onSubmit={onSubmit}>
-        <Form>
-          <Modal.Header closeButton>{header}</Modal.Header>
-          <Modal.Body>{children}</Modal.Body>
-          <Modal.Footer>
-            {!!secondaryText && (
+      <Formik
+        initialValues={initialValues}
+        onSubmit={onSubmit}
+        validationSchema={validationSchema}
+      >
+        {({ isSubmitting, ...form }) => (
+          <Form>
+            <Modal.Header closeButton>{header}</Modal.Header>
+            <Modal.Body>{children}</Modal.Body>
+            <Modal.Footer>
+              {!!secondaryText && (
+                <Button
+                  type="button"
+                  className="modal--button-secondary"
+                  onClick={partial(onClickSecondary, form)}
+                >
+                  {secondaryText}
+                </Button>
+              )}
               <Button
-                className="modal--button-secondary"
-                onClick={onClickSecondary}
+                className="modal--button-primary"
+                type="submit"
+                loading={isSubmitting}
               >
-                {secondaryText}
+                {primaryText}
               </Button>
-            )}
-            <Button className="modal--button-primary" type="submit">
-              {primaryText}
-            </Button>
-          </Modal.Footer>
-        </Form>
+            </Modal.Footer>
+          </Form>
+        )}
       </Formik>
     </Modal>
   );
@@ -73,6 +88,8 @@ ModalComponent.propTypes = {
   secondaryText: string,
   className: string,
   initialValues: object,
+  validationSchema: object,
+  size: oneOf(['sm', 'lg', 'xl']),
 };
 
 ModalComponent.defaultProps = {
@@ -86,6 +103,8 @@ ModalComponent.defaultProps = {
   secondaryText: undefined,
   className: undefined,
   initialValues: {},
+  validationSchema: null,
+  size: 'lg',
 };
 
 export { ModalComponent as Modal };
