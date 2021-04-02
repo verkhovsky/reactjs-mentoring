@@ -12,6 +12,7 @@ const moviesState = {
   movies: {},
   isLoading: true,
   filterBy: 'All',
+  sortBy: null,
 };
 
 export const moviesReducer = (state = moviesState, { type, payload }) => {

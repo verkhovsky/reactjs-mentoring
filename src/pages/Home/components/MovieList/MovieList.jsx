@@ -38,17 +38,21 @@ export const MovieList = ({ movies, onItemClick }) => {
   }, []);
 
   const handleEditMovie = useCallback(
-    movie => {
-      dispatch(editMovie(movie));
+    async movie => {
+      await dispatch(editMovie(movie));
+
+      handleActionModalClose();
     },
-    [dispatch],
+    [dispatch, handleActionModalClose],
   );
 
   const handleDeleteMovie = useCallback(
-    ({ id }) => {
-      dispatch(removeMovie(id));
+    async ({ id }) => {
+      await dispatch(removeMovie(id));
+
+      handleActionModalClose();
     },
-    [dispatch],
+    [dispatch, handleActionModalClose],
   );
 
   const renderActionModal = useCallback(() => {

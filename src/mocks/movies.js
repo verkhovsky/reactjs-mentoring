@@ -12,6 +12,10 @@ export const FILTER_GENRES = ['All', 'Drama', 'Fantasy', 'Comedy', 'Adventure'];
 
 export const SORT_BY = [
   {
+    label: 'Default',
+    value: null,
+  },
+  {
     label: 'Realease Date',
     value: 'release_date',
   },

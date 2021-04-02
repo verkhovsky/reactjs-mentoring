@@ -8,17 +8,17 @@ export const Button = ({
   children,
   className,
   onClick,
-  isLoading,
+  loading,
   disabled,
   ...props
 }) => (
   <button
     className={classnames('button--wrapper', className)}
     onClick={onClick}
-    disabled={disabled || isLoading}
+    disabled={disabled || loading}
     {...props}
   >
-    {isLoading ? (
+    {loading ? (
       <FontAwesomeIcon className="button--loading" icon={faCircleNotch} />
     ) : (
       children
@@ -28,7 +28,7 @@ export const Button = ({
 
 Button.propTypes = {
   onClick: func,
-  isLoading: bool,
+  loading: bool,
   disabled: bool,
   children: oneOfType([arrayOf(node), node]),
   className: string,
@@ -36,7 +36,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   onClick: () => {},
-  isLoading: false,
+  loading: false,
   disabled: false,
   children: null,
   className: '',

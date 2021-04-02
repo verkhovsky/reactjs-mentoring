@@ -8,6 +8,12 @@ export const Home = ({ movies, setSelectedMovie }) => {
     id => {
       const currentMovie = movies.find(movie => movie.id === id);
       setSelectedMovie(currentMovie);
+
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
     },
     [movies, setSelectedMovie],
   );

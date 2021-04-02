@@ -24,10 +24,14 @@ export const SecondHeader = ({ content }) => {
   }, [setAddOpen]);
 
   const handleCreateMovie = useCallback(
-    movie => {
-      dispatch(addMovie(movie));
+    async movie => {
+      const { id, ...restMovie } = movie;
+
+      await dispatch(addMovie(restMovie, id));
+
+      handleCloseMovie();
     },
-    [dispatch],
+    [dispatch, handleCloseMovie],
   );
 
   return (
